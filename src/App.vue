@@ -1,16 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <NavbarComponent></NavbarComponent>
+    <router-view></router-view>
+    <FooterComponent></FooterComponent>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavbarComponent from './components/NavbarComponent.vue';
+import FooterComponent from "./components/FooterComponent.vue"
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavbarComponent,
+    FooterComponent
+  },
+  data() {
+    return {
+      // basket: {
+      //   totalCount: 0,
+      //   totalPrice: 0,
+      //   totalSaving: 0,
+      //   items: []
+      // }
+    };
+  },
+  computed: {
+    ...mapState(['basket'])
+  },
+  methods: {
+    ...mapActions(['addToBasket', 'removeFromBasket'])
   }
+
 }
 </script>
 
@@ -20,7 +43,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
+  background-color: #2A353B;
 }
 </style>
