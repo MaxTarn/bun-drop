@@ -1,540 +1,361 @@
 {
-    "DISCLAIMER" : "A lot of this data has been created with collaboration with AI",
-    "menu-ingredients": [
-        {
-            "id" : 1,
-            "name" : "Sesame bun"
-        },
-        {
-            "id" : 2,
-            "name" : "Beef Patty"
-        },
-        {
-            "id" : 3,
-            "name" : "Chicken patty"
-        },
-        {
-            "id" : 4,
-            "name" : "Lettuce"
-        },
-        {
-            "id" : 5,
-            "name" : "Onion"
-        },
-        {
-            "id" : 6,
-            "name" : "Tomato"
-        },
-        {
-            "id" : 7,
-            "name" : "Bacon"
-        },
-        {
-            "id" : 8,
-            "name" : "Pickles"
-        },
-        {
-            "id" : 9,
-            "name" : "Jalapeno"
-        },
-        {
-            "id" : 10,
-            "name" : "Pickled red onion"
-        },
-        {
-            "id" : 11,
-            "name" : "Friso bun"
-        },
-        {
-            "id" : 12,
-            "name" : "Aioli"
-        },
-        {
-            "id" : 13,
-            "name" : "Hamburger Sauce"
-        },
-        {
-            "id" : 14,
-            "name" : "Sauce"
-        },
-        {
-            "id" : 15,
-            "name" : "Ice cream"
-        },
-        {
-            "id" : 16,
-            "name" : "Sprinkles"
-        },
-        {
-            "id" : 17,
-            "name" : "Chocolate sauce"
-        },
-        {
-            "id" : 18,
-            "name" : "Ranch Dressing"
-        },
-        {
-            "id" : 19,
-            "name" : "Mustard"
-        },
-        {
-            "id" : 20,
-            "name" : "Ketchup"
-        },
-        {
-            "id" : 21,
-            "name" : "Honey Mustard"
-        },
-        {
-            "id" : 22,
-            "name" : "Orange juice"
-        },
-        {
-            "id" : 23,
-            "name" : "Apple juice"
-        },
-        {
-            "id" : 24,
-            "name" : "Milk"
-        },
-        {
-            "id" : 25,
-            "name" : "Mango"
-        },
-        {
-            "id" : 26,
-            "name" : "Strawberry"
-        },
-        {
-            "id" : 27,
-            "name" : "Green smoothie mix"
-        },
-        {
-            "id" : 28,
-            "name" : "French Fries"
-        },
-        {
-            "id" : 29,
-            "name" : "Sweet potato"
-        },
-        {
-            "id" : 30,
-            "name" : "Apple"
-        },
-        {
-            "id" : 31,
-            "name" : "Onion Rings"
-        }
-    ],
-    "menu-data": [
-        {
-            "id": 1,
-            "type": "burger",
-            "name": "Murica Cheese Burger",
-            "img": "/Media/Images/Food/burger1.png",
-            "ingredients": [
-                13,
-                2,
-                1,
-                4,
-                5
-            ],
-            "price": {
-                "currentPrice": 99,
-                "prevPrice": 129,
-                "priceIsLowered": false
-            }
-        },
-        {
-            "id": 2,
-            "type": "burger",
-            "name": "Large Burger with Bacon and Pickles",
-            "img": "/Media/Images/Food/burger2.png",
-            "ingredients": [
-                14,
-                2,
-                1,
-                4,
-                6,
-                7,
-                8
-            ],
-            "price": {
-                "currentPrice": 109,
-                "prevPrice": 139,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 3,
-            "type": "burger",
-            "name": "Burger With Jalapeno and pickled red onion",
-            "img": "/Media/Images/Food/burger3.png",
-            "ingredients": [
-                14,
-                2,
-                1,
-                4,
-                6,
-                9,
-                10
-            ],
-            "price": {
-                "currentPrice": 89,
-                "prevPrice": 119,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 4,
-            "type": "burger",
-            "name": "Small cheese burger",
-            "img": "/Media/Images/Food/burger4.png",
-            "ingredients": [
-                14,
-                2,
-                11,
-                4,
-                6
-            ],
-            "price": {
-                "currentPrice": 99,
-                "prevPrice": 129,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 5,
-            "type": "burger",
-            "name": "Burger With aioli",
-            "img": "/Media/Images/Food/burger5.png",
-            "ingredients": [
-                14,
-                2,
-                1,
-                4,
-                6,
-                12
-            ],
-            "price": {
-                "currentPrice": 109,
-                "prevPrice": 139,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 6,
-            "type": "burger",
-            "name": "Small burger with pickles and onions",
-            "img": "/Media/Images/Food/burger6.png",
-            "ingredients": [
-                14,
-                2,
-                1,
-                4,
-                5,
-                8
-            ],
-            "price": {
-                "currentPrice": 119,
-                "prevPrice": 149,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 7,
-            "type": "burger",
-            "name": "Lettuce burger",
-            "img": "/Media/Images/Food/burger7.png",
-            "ingredients": [
-                14,
-                2,
-                4,
-                4,
-                6
-            ],
-            "price": {
-                "currentPrice": 109,
-                "prevPrice": 139,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 8,
-            "type": "burger",
-            "name": "Large deluxe burger",
-            "img": "/Media/Images/Food/burger8.png",
-            "ingredients": [
-                14,
-                2,
-                1,
-                4,
-                6,
-                7,
-                8
-            ],
-            "price": {
-                "currentPrice": 99,
-                "prevPrice": 129,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 9,
-            "type": "dessert",
-            "name": "Soft serve ice-cream with sprinkles and chocolate sauce",
-            "img": "/Media/Images/Food/dessert1.png",
-            "ingredients": [
-                15,
-                16,
-                17
-            ],
-            "price": {
-                "currentPrice": 49,
-                "prevPrice": 69,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 10,
-            "type": "dessert",
-            "name": "Small soft serve ice-cream with sprinkles",
-            "img": "/Media/Images/Food/dessert2.png",
-            "ingredients": [
-                15,
-                16
-            ],
-            "price": {
-                "currentPrice": 59,
-                "prevPrice": 79,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 11,
-            "type": "dessert",
-            "name": "Soft serve ice-cream with green sprinkles",
-            "img": "/Media/Images/Food/dessert3.png",
-            "ingredients": [
-                15,
-                16
-            ],
-            "price": {
-                "currentPrice": 69,
-                "prevPrice": 89,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 12,
-            "type": "dessert",
-            "name": "Large soft serve vanilla ice-cream",
-            "img": "/Media/Images/Food/dessert4.png",
-            "ingredients": [
-                15
-            ],
-            "price": {
-                "currentPrice": 39,
-                "prevPrice": 59,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 13,
-            "type": "dressing",
-            "name": "Ranch Dressing",
-            "img": "/Media/Images/Food/dressing1.png",
-            "ingredients": [
-                18
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 14,
-            "type": "dressing",
-            "name": "Mustard",
-            "img": "/Media/Images/Food/dressing2.png",
-            "ingredients": [
-                19
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 15,
-            "type": "dressing",
-            "name": "Ketchup",
-            "img": "/Media/Images/Food/dressing3.png",
-            "ingredients": [
-                20
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 16,
-            "type": "dressing",
-            "name": "Honey Mustard",
-            "img": "/Media/Images/Food/dressing4.png",
-            "ingredients": [
-                21
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 17,
-            "type": "drink",
-            "name": "Orange juice",
-            "img": "/Media/Images/Food/drink1.png",
-            "ingredients": [
-                22
-            ],
-            "price": {
-                "currentPrice": 19,
-                "prevPrice": 29,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 18,
-            "type": "drink",
-            "name": "Apple juice",
-            "img": "/Media/Images/Food/drink2.png",
-            "ingredients": [
-                23
-            ],
-            "price": {
-                "currentPrice": 19,
-                "prevPrice": 29,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 19,
-            "type": "drink",
-            "name": "Milk",
-            "img": "/Media/Images/Food/drink3.png",
-            "ingredients": [
-                24
-            ],
-            "price": {
-                "currentPrice": 19,
-                "prevPrice": 29,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 20,
-            "type": "drink",
-            "name": "Mango smoothie",
-            "img": "/Media/Images/Food/drink4.png",
-            "ingredients": [
-                25
-            ],
-            "price": {
-                "currentPrice": 19,
-                "prevPrice": 29,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 21,
-            "type": "drink",
-            "name": "Strawberry surprise smoothie",
-            "img": "/Media/Images/Food/drink5.png",
-            "ingredients": [
-                26
-            ],
-            "price": {
-                "currentPrice": 19,
-                "prevPrice": 29,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 22,
-            "type": "drink",
-            "name": "Green smoothie",
-            "img": "/Media/Images/Food/drink6.png",
-            "ingredients": [
-                27
-            ],
-            "price": {
-                "currentPrice": 19,
-                "prevPrice": 29,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 23,
-            "type": "side",
-            "name": "French Fries",
-            "img": "/Media/Images/Food/sides1.png",
-            "ingredients": [
-                28
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 24,
-            "type": "side",
-            "name": "Sweet potato fries",
-            "img": "/Media/Images/Food/sides2.png",
-            "ingredients": [
-                29
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 25,
-            "type": "side",
-            "name": "Apple slices",
-            "img": "/Media/Images/Food/sides3.png",
-            "ingredients": [
-                30
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        },
-        {
-            "id": 26,
-            "type": "side",
-            "name": "Onion Rings",
-           "img": "/Media/Images/Food/sides4.png",
-            "ingredients": [
-                31
-            ],
-            "price": {
-                "currentPrice": 29,
-                "prevPrice": 39,
-                "priceIsLowered": true
-            }
-        }
-    ],
-    "users": []
+  "DISCLAIMER": [
+    {
+      "id": "1",
+      "DISCLAIMER": "A lot of this data(db.json) has been created with collaboration with AI"
+    },
+    {
+      "id": "2",
+      "DISCLAIMER": "Regex has been done through the use of AI and some various regex making sites, since regex is an ungodly abomination that makes no sense :/"
+    },
+    {
+      "id": "3",
+      "DISCLAIMER": "The authentication of userNames and userPasswords is done through JS which is hella bad and sketchy, but it's a small project so it's fine... I guess"
+    }
+  ],
+  "menu-data-types": [
+    {
+      "id": "1",
+      "type": "burger"
+    },
+    {
+      "id": "2",
+      "type": "dessert"
+    },
+    {
+      "id": "3",
+      "type": "dressing"
+    },
+    {
+      "id": "4",
+      "type": "drink"
+    },
+    {
+      "id": "5",
+      "type": "side"
+    }
+  ],
+  "menu-data": [
+    {
+      "id": "1",
+      "type": "burger",
+      "name": "Murica Cheese Burger",
+      "img": "/Media/Images/Food/burger1.png",
+      "price": {
+        "currentPrice": 99,
+        "prevPrice": 129,
+        "priceIsLowered": false
+      }
+    },
+    {
+      "id": "2",
+      "type": "burger",
+      "name": "Large Burger with Bacon and Pickles",
+      "img": "/Media/Images/Food/burger2.png",
+      "price": {
+        "currentPrice": 109,
+        "prevPrice": 139,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "3",
+      "type": "burger",
+      "name": "Burger With Jalapeno and pickled red onion",
+      "img": "/Media/Images/Food/burger3.png",
+      "price": {
+        "currentPrice": 89,
+        "prevPrice": 119,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "4",
+      "type": "burger",
+      "name": "Small cheese burger",
+      "img": "/Media/Images/Food/burger4.png",
+      "price": {
+        "currentPrice": 99,
+        "prevPrice": 129,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "burger",
+      "name": "Burger With aioli",
+      "img": "/Media/Images/Food/burger5.png",
+      "price": {
+        "currentPrice": 109,
+        "prevPrice": 139,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "burger",
+      "name": "Small burger with pickles and onions",
+      "img": "/Media/Images/Food/burger6.png",
+      "price": {
+        "currentPrice": 119,
+        "prevPrice": 149,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "burger",
+      "name": "Lettuce burger",
+      "img": "/Media/Images/Food/burger7.png",
+      "price": {
+        "currentPrice": 109,
+        "prevPrice": 139,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "burger",
+      "name": "Large deluxe burger",
+      "img": "/Media/Images/Food/burger8.png",
+      "price": {
+        "currentPrice": 99,
+        "prevPrice": 129,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "dessert",
+      "name": "Soft serve ice-cream with sprinkles and chocolate sauce",
+      "img": "/Media/Images/Food/dessert1.png",
+      "price": {
+        "currentPrice": 49,
+        "prevPrice": 69,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "dessert",
+      "name": "Small soft serve ice-cream with sprinkles",
+      "img": "/Media/Images/Food/dessert2.png",
+      "price": {
+        "currentPrice": 59,
+        "prevPrice": 79,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "11",
+      "type": "dessert",
+      "name": "Soft serve ice-cream with green sprinkles",
+      "img": "/Media/Images/Food/dessert3.png",
+      "price": {
+        "currentPrice": 69,
+        "prevPrice": 89,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "12",
+      "type": "dessert",
+      "name": "Large soft serve vanilla ice-cream",
+      "img": "/Media/Images/Food/dessert4.png",
+      "price": {
+        "currentPrice": 39,
+        "prevPrice": 59,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "dressing",
+      "name": "Ranch Dressing",
+      "img": "/Media/Images/Food/dressing1.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "14",
+      "type": "dressing",
+      "name": "Mustard",
+      "img": "/Media/Images/Food/dressing2.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "15",
+      "type": "dressing",
+      "name": "Ketchup",
+      "img": "/Media/Images/Food/dressing3.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "16",
+      "type": "dressing",
+      "name": "Honey Mustard",
+      "img": "/Media/Images/Food/dressing4.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "drink",
+      "name": "Orange juice",
+      "img": "/Media/Images/Food/drink1.png",
+      "price": {
+        "currentPrice": 19,
+        "prevPrice": 29,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "18",
+      "type": "drink",
+      "name": "Apple juice",
+      "img": "/Media/Images/Food/drink2.png",
+      "price": {
+        "currentPrice": 19,
+        "prevPrice": 29,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "19",
+      "type": "drink",
+      "name": "Milk",
+      "img": "/Media/Images/Food/drink3.png",
+      "price": {
+        "currentPrice": 19,
+        "prevPrice": 29,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "20",
+      "type": "drink",
+      "name": "Mango smoothie",
+      "img": "/Media/Images/Food/drink4.png",
+      "price": {
+        "currentPrice": 19,
+        "prevPrice": 29,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "21",
+      "type": "drink",
+      "name": "Strawberry surprise smoothie",
+      "img": "/Media/Images/Food/drink5.png",
+      "price": {
+        "currentPrice": 19,
+        "prevPrice": 29,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "22",
+      "type": "drink",
+      "name": "Green smoothie",
+      "img": "/Media/Images/Food/drink6.png",
+      "price": {
+        "currentPrice": 19,
+        "prevPrice": 29,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "23",
+      "type": "side",
+      "name": "French Fries",
+      "img": "/Media/Images/Food/sides1.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "24",
+      "type": "side",
+      "name": "Sweet potato fries",
+      "img": "/Media/Images/Food/sides2.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "25",
+      "type": "side",
+      "name": "Apple slices",
+      "img": "/Media/Images/Food/sides3.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    },
+    {
+      "id": "26",
+      "type": "side",
+      "name": "Onion Rings",
+      "img": "/Media/Images/Food/sides4.png",
+      "price": {
+        "currentPrice": 29,
+        "prevPrice": 39,
+        "priceIsLowered": true
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "userName": "user",
+      "password": "password",
+      "realFirstName": "John",
+      "realLastName": "Cena",
+      "favorites": [
+        1,
+        7
+      ]
+    },
+    {
+      "id": "2",
+      "userName": "admin2",
+      "password": "password2",
+      "realFirstName": "Pikatchu",
+      "realLastName": "pokkemonn",
+      "favorites": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "3",
+      "userName": "user3",
+      "password": "password3",
+      "realFirstName": "Speedy",
+      "realLastName": "Gonzales",
+      "favorites": [
+        1,
+        2
+      ]
+    }
+  ]
 }
