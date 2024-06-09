@@ -102,11 +102,19 @@ export default createStore({
                 const users = await response.json();
                 const user = users.find(user => user.userName === username && user.password === password);
                 commit('SET_USER', user || null);
+
+
+                if (user) {
+                    return true;
+                }
             } catch (error) {
                 console.error('Error logging in:', error);
                 commit('SET_USER', null);
             }
-        }, 
+
+
+            return false;
+        },
         async addToFavorites({ state, commit }, foodItemId) {
             try {
                 const updatedUser = { ...state.user, favorites: [...state.user.favorites, foodItemId] };
@@ -117,18 +125,18 @@ export default createStore({
                     },
                     body: JSON.stringify(updatedUser)
                 });
-        
+
                 if (!response.ok) {
                     throw new Error(`ERROR: response from db was invalid: ${response.status}`);
                 }
-        
+
                 const returnedUser = await response.json();
                 commit('SET_USER', returnedUser);
             } catch (error) {
                 console.error('Error adding to favorites:', error);
             }
         },
-        
+
         async removeFromFavorites({ state, commit }, foodItemId) {
             try {
                 const updatedUser = { ...state.user, favorites: state.user.favorites.filter(id => id !== foodItemId) };
@@ -142,7 +150,7 @@ export default createStore({
                 if (!response.ok) {
                     throw new Error(`ERROR: response from db was invalid: ${response.status}`);
                 }
-        
+
                 const returnedUser = await response.json();
                 commit('SET_USER', returnedUser);
             } catch (error) {
@@ -151,7 +159,43 @@ export default createStore({
         },
         logOut({ commit }) {
             commit('SET_USER', null);
-          }
+        },
+        async createUser({ commit }, newUser) {
+            try {
+
+                const usersResponse = await fetch('http://localhost:3000/users');
+                if (!usersResponse.ok) {
+                    throw new Error(`ERROR: response from db was invalid: ${usersResponse.status}`);
+                }
+                const users = await usersResponse.json();
+
+
+                if (users.some(user => user.userName === newUser.userName)) {
+                    throw new Error('ERROR: userName already exists');
+                }
+
+
+                const response = await fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`ERROR: response from db was invalid: ${response.status}`);
+                }
+
+                const createdUser = await response.json();
+                commit('SET_USER', createdUser);
+
+
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
     },
     plugins: [createPersistedState({
         storage: {
