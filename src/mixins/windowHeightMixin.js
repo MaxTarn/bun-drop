@@ -1,3 +1,5 @@
+//dynamically calculates the height that a View needs to be to fill in the entire screen
+//and also subtracts the height of the navbar and footer
 export default {
     data() {
       return {

@@ -1,23 +1,12 @@
 <template>
   <div class="search-box">
-    <input v-model="searchQuery" type="text" placeholder="Search..." @input="searchQueryChanged">
-    <button @click="updateDataFromDb">Search</button>
-
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        Ingredients
+    
+    <div class="button-group">
+      <button @click="filterByType(-1)" class="sort-button">Everything</button>
+      <button class="sort-button" v-for="(type, index) in types" :key="index" @click="filterByType(index)">
+        {{ type.data.type }}
       </button>
-      <ul class="dropdown-menu">
-        <li v-for="(ingredient, index) in ingredients" :key="index">
-          <div class="dropdown-item d-flex text-center align-content-center">
-            <input type="checkbox" class="d-flex p-0" @click="ingredientToggleChange($event, index)">
-            <p>{{ ingredient.data.name }}</p>
-          </div>
-        </li>
-      </ul>
     </div>
-    <p> {{ countOfItems }}</p>
   </div>
 </template>
 
@@ -30,119 +19,21 @@ export default {
     menuFoodItems: {
       type: Array,
       required: true
-    },
-    menuIngredients: {
-      type: Array,
-      required: true
     }
   },
   data() {
     return {
-      countOfItems: 0,
-      searchQuery: '',
       localMenuFoodItems: [], // unsorted array of data from db
-      ingredients: [], // data to show in the dropdown
+      types: [], // data to show in the dropdown
     };
   },
   methods: {
     searchQueryChanged() {
       this.updateDataFromDb().then(this.filterItems())
     },
-    ingredientToggleChange(event, index) {
-      //handles logic for having a three state checkbox    checked, not checked , indeterminate
-
-      let target = event.target
-      let currentState = this.ingredients[index].state;
-
-
-
-      if (currentState === 'unchecked') {
-        //from unchecked to checked
-        this.ingredients[index].state = 'checked';
-        this.ingredients[index].prevState = 'unchecked';
-        target.checked = true
-        target.indeterminate = undefined
-
-      } else if (currentState === 'checked') {
-        //from checked to inderterminate
-        this.ingredients[index].state = 'indeterminate';
-        this.ingredients[index].prevState = 'checked';
-
-        target.checked = undefined
-        target.indeterminate = true
-
-      } else if (currentState === 'indeterminate') {
-        // from inderterminate to unchecked
-        this.ingredients[index].state = 'unchecked';
-        this.ingredients[index].prevState = 'indeterminate';
-
-        target.checked = false
-        target.indeterminate = undefined
-      }
-
-      currentState = this.ingredients[index].state;
-
-      //console.log(this.getIngredientSelections());
-      this.filterItems()
-
+    emitAllItems() {
+      this.$emit('allItems', this.localMenuFoodItems);
     },
-    getIngredientSelections() {
-      //generates a object that contains parameters to filter the search results by excluding/including certain entries
-      let selection = {
-        mustHave: [],
-        mustNotHave: []
-      };
-
-      this.ingredients.forEach(ingredient => {
-        if (ingredient.state === 'checked') {
-          selection.mustHave.push(ingredient);
-        } else if (ingredient.state === 'indeterminate') {
-          selection.mustNotHave.push(ingredient);
-        }
-      });
-
-      return selection;
-    },
-
-    filterItems() {
-      const query = this.searchQuery.trim().toLowerCase();
-      const selectedIngredients = this.getIngredientSelections();
-
-      const filteredItems = this.localMenuFoodItems.filter(item =>
-        item.name.toLowerCase().trim().includes(query) &&
-        this.checkItemIngredients(item.ingredients, selectedIngredients)
-      );
-
-      this.countOfItems = filteredItems.length;
-      this.$emit('filtered-items', filteredItems);
-    },
-    checkItemIngredients(itemIngredients, selectedIngredients) {
-      // Log selected ingredients for debugging
-      
-
-      // Extract names of must-have and must-not-have ingredients
-      const mustHaveIngredientNames = selectedIngredients.mustHave.map(ingredient => ingredient.data.name);
-      const mustNotHaveIngredientNames = selectedIngredients.mustNotHave.map(ingredient => ingredient.data.name);
-
-      // If there are no must-have and must-not-have ingredients, return true
-      if (mustHaveIngredientNames.length === 0 && mustNotHaveIngredientNames.length === 0) return true;
-
-      // Check if all must-have ingredients are included in the itemIngredients
-      const allMustHaveIncluded = mustHaveIngredientNames.every(ingredientName =>
-        itemIngredients.includes(ingredientName)
-      );
-
-      // Check if no must-not-have ingredients are included in the itemIngredients
-      const noMustNotHaveIncluded = !mustNotHaveIngredientNames.some(ingredientName =>
-        itemIngredients.includes(ingredientName)
-      );
-
-      // Return true if all must-have ingredients are included and no must-not-have ingredients are included
-      return allMustHaveIncluded && noMustNotHaveIncluded;
-    },
-
-
-
     async updateDataFromDb() {
       try {
         const response = await fetch("http://localhost:3000/menu-data");
@@ -151,34 +42,39 @@ export default {
         }
         const data = await response.json();
         this.localMenuFoodItems = data;
-        this.filterItems();
       } catch (error) {
         console.error('Error fetching menu data:', error);
       }
     },
-    async updateMenuingredientsFromDb() {
+    async updateMenuDataTypesFromDb() {
       try {
-        const response = await fetch("http://localhost:3000/menu-ingredients")
+        const response = await fetch("http://localhost:3000/menu-data-types")
         if (!response.ok) {
-          throw new Error('Failed to fetch menu data');
+          throw new Error('Failed to fetch menu data types');
         }
         const data = await response.json()
 
-        data.forEach(ingredient => {
+        data.forEach(type => {
           let obj = {
-            data: ingredient,
+            data: type,
             prevState: "indeterminate",
             state: "unchecked"
           }
-          this.ingredients.push(obj)
+          this.types.push(obj)
         });
       } catch (err) {
-        console.log("ERROR: failed to get data from db regarding menu ingredients")
+        console.log("ERROR: failed to get data from db regarding menu data types")
       }
-    }
+    },
+    filterByType(index) {
+      if(index === -1) return this.$emit('filteredItems', this.localMenuFoodItems);
+      let selectedType = this.types[index].data.type;
+      let filteredItems = this.localMenuFoodItems.filter(item => item.type === selectedType);
+      this.$emit('filteredItems', filteredItems);
+    },
   },
   async created() {
-    await this.updateMenuingredientsFromDb();
+    await this.updateMenuDataTypesFromDb();
     await this.updateDataFromDb()
   }
 };
@@ -192,5 +88,26 @@ export default {
 .search-box input {
   padding: 5px;
   margin-right: 10px;
+}
+
+.sort-button {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.sort-button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
 }
 </style>

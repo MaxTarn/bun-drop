@@ -3,17 +3,8 @@
     <h3 class="title">{{ foodItem.name }}</h3>
     <img :src="foodItem.img" alt="">
 
-    <div class="ingredients">
-      <template v-if="ingredients.length > 0">
-        <p v-for="(ingredient, index) in ingredients.slice(0, 4)" :key="index"
-          style="padding: 0;margin: 0; opacity: 0.6;">
-          {{ ingredient }}
-        </p>
-        <p v-if="foodItem.ingredients.length > 4" class="more-indicators" style="padding: 0; margin: 0;">...</p>
-      </template>
-      <template v-else>
-        <p style="margin: 0;padding: 0;">No ingredients found</p>
-      </template>
+    <div class="ingredients d-flex align-content-center m-0">
+      <p>{{ type }}</p>
     </div>
     <div class="price-and-add-container d-flex justify-content-between">
       <div class="left-column d-flex justify-content-center align-items-center" style="width: 50%;">
@@ -39,7 +30,12 @@
         </div>
       </div>
     </div>
-    <p></p>
+    <div v-if="user">
+  <button type="button" class="btn " @click="toggleFavorite">
+    <i :class="isFavorite ? 'fas fa-star text-warning' : 'far fa-star text-warning'"></i>
+  </button>
+</div>
+
   </div>
   <div v-else>Loading...</div>
 </template>
@@ -59,34 +55,29 @@ export default {
   data() {
     return {
       foodItem: null,
-      ingredients: [],
+      type: null,
       removeTheArrowUpAndDownFromMozillaBrowsers: "-moz-appearance: textfield;"  // style is done this way to remove the warning that vs code gives, since that is hella annoying
     };
   },
   async created() {
     try {
-      // Fetch food item data
       const response = await fetch(`http://localhost:3000/menu-data?id=${this.itemId}`);
       const data = await response.json();
       this.foodItem = Array.isArray(data) ? data[0] : data;
-
-      // Fetch ingredient names asynchronously
-      await Promise.all(this.foodItem.ingredients.map(async (ingredientId) => {
-        try {
-          const response = await fetch(`http://localhost:3000/menu-ingredients?id=${ingredientId}`);
-          const responseData = await response.json();
-          this.ingredients.push(responseData[0].name);
-        } catch (error) {
-          console.error('Error fetching ingredient name:', error);
-          this.ingredients.push('Error');
-        }
-      }));
+      this.type = this.foodItem.type;
     } catch (error) {
       console.error('Error fetching food item:', error);
     }
   },
   methods: {
-    ...mapActions(['addToBasket', 'removeFromBasket']),
+    ...mapActions(['addToBasket', 'removeFromBasket', 'addToFavorites', 'removeFromFavorites', 'logOut']),
+    toggleFavorite() {
+      if (this.isFavorite) {
+        this.removeFromFavorites(this.itemId);
+      } else {
+        this.addToFavorites(this.itemId);
+      }
+    },
     incrementItemCount() {
       this.addToBasket(this.foodItem)
     },
@@ -95,9 +86,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['alreadyInBasket', 'basket']),
+    ...mapGetters(['alreadyInBasket', 'basket', 'user']),
     isInBasket() {
       return this.alreadyInBasket(this.foodItem)
+    },
+    isFavorite() {
+      return this.user.favorites.includes(this.itemId);
     },
     itemCount() {
       const item = this.basket.items.find(item => item.data.id === this.foodItem.id);

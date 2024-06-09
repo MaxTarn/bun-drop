@@ -5,7 +5,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div :class="['collapse', 'navbar-collapse', { show: isActive }]" id="navbarNav" class="justify-content-between">
+        <div :class="['collapse', 'navbar-collapse', { show: isActive }]" id="navbarNav"
+            class="justify-content-between">
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item">
                     <RouterLink to="/" class="text-decoration-none">
@@ -14,12 +15,12 @@
                 </li>
                 <li class="nav-item">
                     <RouterLink to="/Menu" class="text-decoration-none">
-                        <a class="nav-link" href="#">Menu</a>    
+                        <a class="nav-link" href="#">Menu</a>
                     </RouterLink>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
-                </li>
+                </li> -->
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-auto d-flex justify-content-center" style="border-radius: 10px;">
@@ -32,8 +33,21 @@
                         <span>Kundvagn</span>
                     </RouterLink>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
+                <li v-if="!user" class="nav-item">
+                    <RouterLink to="/logIn" class="nav-link">Log in</RouterLink>
+                </li>
+                <li v-else class="nav-item">
+                    <div class="dropdown">
+                        <p style="padding-right: 10px; padding-left: 10px;" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Hey there, {{ user.userName }} 👋
+                        </p>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item text-dark" @click="logOut">Log out</button></li>
+                            <li><button class="dropdown-item text-dark">Placeholder1</button></li>
+                            <li><button class="dropdown-item text-dark">Placeholder2</button></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -41,8 +55,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'; 
-//import { mapActions, mapGetters } from 'vuex'; 
+
+import { mapActions, mapGetters } from 'vuex'; 
 export default {
     name: 'NavbarComponent',
     data() {
@@ -51,13 +65,14 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['logOut']),
         toggleMenu() {
             this.isActive = !this.isActive;
         }
     },
-    computed :{
-        ...mapGetters(['basket']),
-        totalBasketCount(){
+    computed: {
+        ...mapGetters(['basket', 'user']),
+        totalBasketCount() {
             return this.basket.totalCount
         }
     }
@@ -106,11 +121,12 @@ export default {
 .custom-background-color {
     background-color: #2F3C42;
 }
+
 /* when width bigger than 768px adds some margin to the nav-bar brand (BUN DROP) that is on the left side of the navbar */
 @media (min-width: 768px) {
-  .navbar-brand {
-    margin-left: 30px; 
-  }
+    .navbar-brand {
+        margin-left: 30px;
+    }
 }
 
 .navbar-toggler-icon {

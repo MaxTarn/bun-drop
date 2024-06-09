@@ -19,12 +19,7 @@ export default {
   },
   data() {
     return {
-      // basket: {
-      //   totalCount: 0,
-      //   totalPrice: 0,
-      //   totalSaving: 0,
-      //   items: []
-      // }
+      
     };
   },
   computed: {
